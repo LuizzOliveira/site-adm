@@ -1,0 +1,40 @@
+<?php
+require_once __DIR__ . '/../config/config-componentes.php';
+?>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<?php require_once Config::$paths['header']; ?>
+
+<body class="body">
+
+    <!-- navegação -->
+    <?php require_once Config::$paths['navbar']; ?>
+
+    <!-- lateral -->
+    <?php require_once Config::$paths['sidebar']; ?>
+
+    <main class="content-grid">
+        <?php
+        $pages = [
+            'home' => __DIR__ . '/sections-pages/home.php',
+            'produtos' => __DIR__ . '/sections-pages/produtos.php',
+            'pedidos'    => __DIR__ . '/sections-pages/pedidos.php',
+            'clientes'   => __DIR__ . '/sections-pages/clientes.php',
+        ];
+
+        $page = $_GET['page'] ?? 'home';
+
+        if (array_key_exists($page, $pages) && file_exists($pages[$page])) {
+            require_once $pages[$page];
+        } else {
+            require_once __DIR__ . '/home.php';
+        }
+        ?>
+    </main>
+
+    <?php require_once Config::$paths['footer']; ?>
+
+</body>
+</html>
