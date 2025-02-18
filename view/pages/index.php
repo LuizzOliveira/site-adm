@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../config/config-componentes.php';
+require_once __DIR__ . '/../../config/config-componentes.php';
 ?>
 
 <!DOCTYPE html>
@@ -25,8 +25,12 @@ require_once __DIR__ . '/../config/config-componentes.php';
         ];
 
         $page = $_GET['page'] ?? 'home';
-
-        if (array_key_exists($page, $pages) && file_exists($pages[$page])) {
+        if($page == false){
+            echo $page;
+            $page = 'home'; 
+        }
+        
+        if (array_key_exists($page, $pages) && file_exists($pages[$page]) && $page != null) {
             require_once $pages[$page];
         } else {
             require_once __DIR__ . '/home.php';

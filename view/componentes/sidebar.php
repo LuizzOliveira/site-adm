@@ -1,6 +1,6 @@
 <aside class="sidebar-grid">
     <nav>
-        <img class="img-sidebar" src="/site-adm/view/assets/img/logo.png" alt="logo">
+        <img class="img-sidebar" src="http://localhost/site-adm/view/assets/img/logo.png" alt="logo">
         <ul>
             <li>
                 <a href="?page=home" class="link-sidebar">
