@@ -18,10 +18,10 @@ require_once __DIR__ . '/../../config/config-componentes.php';
     <main class="content-grid">
         <?php
         $pages = [
-            'home' => __DIR__ . '/sections-pages/home.php',
-            'produtos' => __DIR__ . '/sections-pages/produtos.php',
-            'pedidos'    => __DIR__ . '/sections-pages/pedidos.php',
-            'clientes'   => __DIR__ . '/sections-pages/clientes.php',
+            'home' => __DIR__ . 'view/pages/home.php',
+            'produtos' => __DIR__ . '/../pages/Produtos/produtos.php',
+            'pedidos'    => __DIR__ . '/../pages/Pedidos/pedidos.php',
+            'clientes'   => __DIR__ . '/../pages/Clientes/clientes.php',
         ];
 
         $page = $_GET['page'] ?? 'home';
