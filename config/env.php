@@ -1,13 +1,13 @@
 <?php
-$caminhoArquivo = __DIR__ . '../.env';
+
+$caminhoArquivo = __DIR__ . '/../.env';
 $conteudoArquivo = file($caminhoArquivo);
 
-$variavel =[];
+$variaveis = [];
 
 array_map(
-    function($linha) use (&$variaveis){
-        ($key, $val) = explode("=", $linha);
-
+    function ($linha) use (&$variaveis) {
+        list($key, $val) = explode('=', $linha); 
         $variaveis[$key] = $val;
     },
     $conteudoArquivo
