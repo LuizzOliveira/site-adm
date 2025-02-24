@@ -4,14 +4,14 @@
         <ul>
             <li>
                 <a href="?page=home" class="link-sidebar">
-                    <button>
+                    <button class="button">
                         HOME
                     </button>
                 </a>
             </li>
             <li>
                 <a href="?page=clientes" class="link-sidebar">
-                    <button>
+                    <button class="button">
                         CLIENTES
                     </button>
                 </a>
@@ -19,7 +19,7 @@
 
             <li>
                 <a href="?page=produtos" class="link-sidebar">
-                    <button>
+                    <button class="button">
                         PRODUTOS
                     </button>
                 </a>
@@ -27,7 +27,7 @@
 
             <li>
                 <a href="?page=pedidos" class="link-sidebar">
-                    <button>
+                    <button class="button">
                         PEDIDOS
                     </button>
                 </a>

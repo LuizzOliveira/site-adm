@@ -72,7 +72,7 @@ nav.navbar-grid {
     }
 }
 
-button{
+.button{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -97,6 +97,34 @@ button{
     grid-column: 2;
     grid-row: 2;
     overflow: auto;
+
+    a.acao{
+        background-color: #e2dfdf;
+        width: 0px;
+        button.add {
+            cursor:pointer;
+            display: flex;
+            align-items: center;
+            justify-content: baseline;
+            background-color: unset;
+    
+            &.add{
+                background-color: #f6f7f9;
+                color: #0c0c0c;
+                border-radius: 5px;
+                transition: 0.5s;
+                text-align: center;
+                margin-bottom: 5px;
+                margin-right: 0px;
+                &:hover {
+                    scale: 1.1;
+                }
+    
+            }
+        }
+
+    }
+    
 }
 
 .footer-grid {

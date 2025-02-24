@@ -24,7 +24,19 @@ $clientes = [
 ?>
 
 <section>
+    <div>
+        <a class="acao" href="Cadastrar.php">
+            <button class="add" title="Adicionar cliente">
+                <span class="material-symbols-outlined">
+                    add
+                </span>
+                <span>Cadastrar</span>
+            </button>
+        </a>
+    </div>
+
     <table class="tabela">
+        
         <thead>
             <tr>
                 <th>ID</th>
