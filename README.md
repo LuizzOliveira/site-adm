@@ -29,7 +29,7 @@ Este projeto é um sistema web para gerenciar clientes, produtos e pedidos. Ele 
 - **PHP**: Backend para gerenciar dados.
 - **JavaScript**: Lógica do frontend.
 - **HTML/CSS**: Interface do usuário.
-- **MySQL**: Banco de dados.
+
 
 ## 📌 Como Executar o Projeto
 
