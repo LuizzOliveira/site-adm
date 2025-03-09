@@ -1,49 +1,73 @@
+<?php
+
+$pedidos = [
+    ['id' => 1, 'cliente_id' => 2, 'produto_id' => 5, 'quantidade' => 1, 'total' => 499.99],
+    ['id' => 2, 'cliente_id' => 4, 'produto_id' => 10, 'quantidade' => 2, 'total' => 699.98],
+    ['id' => 3, 'cliente_id' => 1, 'produto_id' => 3, 'quantidade' => 1, 'total' => 3299.99],
+    ['id' => 4, 'cliente_id' => 6, 'produto_id' => 8, 'quantidade' => 1, 'total' => 1299.99],
+    ['id' => 5, 'cliente_id' => 3, 'produto_id' => 15, 'quantidade' => 1, 'total' => 2499.99],
+    ['id' => 6, 'cliente_id' => 7, 'produto_id' => 12, 'quantidade' => 1, 'total' => 2199.99],
+    ['id' => 7, 'cliente_id' => 10, 'produto_id' => 7, 'quantidade' => 2, 'total' => 1799.98],
+    ['id' => 8, 'cliente_id' => 5, 'produto_id' => 1, 'quantidade' => 1, 'total' => 2999.99],
+    ['id' => 9, 'cliente_id' => 9, 'produto_id' => 17, 'quantidade' => 1, 'total' => 799.99],
+    ['id' => 10, 'cliente_id' => 15, 'produto_id' => 20, 'quantidade' => 1, 'total' => 499.99],
+];
+
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $pedidoEdit = null;
+    foreach ($pedidos as $pedido) {
+        if ($pedido['id'] == $id) {
+            $pedidoEdit = $pedido;
+            break;
+        }
+    }
+} else {
+    $pedidoEdit = [
+        'id' => '',
+        'cliente_id' => '',
+        'produto_id' => '',
+        'quantidade' => '',
+        'total' => ''
+    ];
+}
+
+?>
+
 <section>
     <div class="pedido">
         <h1>Editar Pedido</h1>
-        <form id="form-pedido">
+        <form method="POST" action="?page=salvarPedido" id="formPedido">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($pedidoEdit['id']) ?>">
+
             <label for="clienteId">Cliente ID:</label>
-            <input type="number" id="clienteId" placeholder="Digite o Cliente ID"><br>
+            <input type="number" name="cliente_id" id="clienteId" value="<?= htmlspecialchars($pedidoEdit['cliente_id']) ?>" required><br>
             
             <label for="produtoId">Produto ID:</label>
-            <input type="number" id="produtoId" placeholder="Digite o Produto ID"><br>
+            <input type="number" name="produto_id" id="produtoId" value="<?= htmlspecialchars($pedidoEdit['produto_id']) ?>" required><br>
 
             <label for="quantidade">Quantidade:</label>
-            <input type="number" id="quantidade" placeholder="Digite a quantidade"><br>
+            <input type="number" name="quantidade" id="quantidade" value="<?= htmlspecialchars($pedidoEdit['quantidade']) ?>" required><br>
 
             <label for="total">Total:</label>
-            <input type="number" id="total" placeholder="Digite o total"><br>
+            <input type="number" step="0.01" name="total" id="total" value="<?= htmlspecialchars($pedidoEdit['total']) ?>" required><br>
 
-            <button type="submit" id="salvar">Salvar</button>
+            <button type="submit">Salvar</button>
         </form> 
-
     </div>
+
+    <?php if (isset($_SESSION['pedido_salvo']) && $_SESSION['pedido_salvo']): ?>
+        <div id="msgSucesso" style="color: green; font-weight: bold; margin-top: 20px;">
+            Pedido salvo com sucesso!
+        </div>
+        <?php unset($_SESSION['pedido_salvo']); ?>
+        <script>
+            setTimeout(function() {
+                window.location.href = "?page=pedidos";
+            }, 5000);
+        </script>
+    <?php endif; ?>
 </section>
-
-<script>
-    const params = new URLSearchParams(window.location.search);
-    const acao = params.get('acao'); // 'adicionar' ou 'editar'
-    const id = params.get('id'); // ID do item, se necessário
-
-    if (acao === 'editar' && id) {
-        // Aqui você pode preencher os campos com os dados do pedido a ser editado
-        // Exemplo: buscarPedido(id);
-        document.getElementById("clienteId").value = "1";
-        document.getElementById("produtoId").value = "10";
-        document.getElementById("quantidade").value = "5";
-        document.getElementById("total").value = "500";
-    }
-
-    document.getElementById("form-pedido").onsubmit = function (e) {
-        e.preventDefault();
-        if (acao === 'adicionar') {
-            alert("Pedido Adicionado!");
-        } else {
-            alert("Pedido Editado!");
-        }
-        window.location.href = "?page=pedidos";
-    };
-</script>
 
 <style>
     .pedido {
@@ -51,20 +75,14 @@
         background-color: #f4f4f4;
         color: #333;
         padding: 20px;
-
-        /* Cabeçalho */
         h1 {
             text-align: center;
             margin-bottom: 20px;
         }
-
-        /* Seções com margens para separar os elementos */
         h2 {
             margin-top: 20px;
             font-size: 1.5em;
         }
-
-        /* Estilo para os botões da página principal */
         button {
             padding: 10px 20px;
             margin: 10px;
@@ -80,8 +98,6 @@
         button:hover {
             background-color: #45a049;
         }
-
-        /* Formulário de edição */
         form {
             background-color: white;
             padding: 20px;
@@ -90,14 +106,11 @@
             width: 300px;
             margin: 0 auto;
         }
-
-        /* Estilo para labels e inputs do formulário */
         label {
             display: block;
             margin: 10px 0 5px;
             font-weight: bold;
         }
-
         input[type="text"],
         input[type="email"],
         input[type="number"] {
@@ -107,15 +120,12 @@
             border: 1px solid #ddd;
             font-size: 1em;
         }
-
         input[type="text"]:focus,
         input[type="email"]:focus,
         input[type="number"]:focus {
             border-color: #4CAF50;
             outline: none;
         }
-
-        /* Botão de salvar do formulário */
         button#salvar {
             width: 100%;
             background-color: #4CAF50;
@@ -126,5 +136,4 @@
             background-color: #45a049;
         }
     }
-
 </style>

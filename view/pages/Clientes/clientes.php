@@ -1,4 +1,5 @@
 <?php
+// Array de clientes (normalmente, você obteria isso de um banco de dados)
 $clientes = [
     ['id' => 1, 'nome' => 'Ana Lima', 'email' => 'ana@email.com'],
     ['id' => 2, 'nome' => 'Carlos Souza', 'email' => 'carlos@email.com'],
@@ -24,7 +25,7 @@ $clientes = [
 ?>
 
 <section>
-    <div>
+    <div class="add">
         <a class="acao" href="?page=updateCliente">
             <button class="add" title="Adicionar cliente">
                 <span class="material-symbols-outlined">
@@ -36,20 +37,24 @@ $clientes = [
     </div>
 
     <table class="tabela">
-        
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($clientes as $cliente): ?>
+            <?php foreach ($clientes as $cliente) : ?>
                 <tr>
                     <td><?= $cliente['id'] ?></td>
                     <td><?= $cliente['nome'] ?></td>
                     <td><?= $cliente['email'] ?></td>
+                    <td>
+                        <a href="?page=updateCliente&id=<?= $cliente['id'] ?>"><button>✏️</button></a>
+                        <button>❌</button>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

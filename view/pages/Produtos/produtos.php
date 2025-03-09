@@ -25,7 +25,7 @@ $produtos = [
 ?>
 
 <section>
-    <div>
+    <div class="add">
         <a class="acao" href="?page=updateProduto">
             <button class="add" title="Adicionar produto">
                 <span class="material-symbols-outlined">
@@ -41,9 +41,9 @@ $produtos = [
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>Categoria</th>
                 <th>Preço</th>
                 <th>Estoque</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -51,9 +51,12 @@ $produtos = [
                 <tr>
                     <td><?= $produto['id'] ?></td>
                     <td><?= $produto['nome'] ?></td>
-                    <td><?= $produto['categoria'] ?></td>
-                    <td><?= $produto['preco'] ?></td>
+                    <td>R$ <?= number_format($produto['preco'], 2, ',', '.') ?></td>
                     <td><?= $produto['estoque'] ?></td>
+                    <td>
+                        <a href="?page=updateProduto&id=<?= $produto['id'] ?>"><button>✏️</button></a>
+                        <button>❌</button>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
