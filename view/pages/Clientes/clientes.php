@@ -10,46 +10,40 @@ $clientes = [
     ['id' => 8, 'nome' => 'Rafael Santos', 'email' => 'rafael@email.com'],
     ['id' => 9, 'nome' => 'Paulo Freitas', 'email' => 'paulo@email.com'],
     ['id' => 10, 'nome' => 'Camila Nunes', 'email' => 'camila@email.com'],
-    ['id' => 11, 'nome' => 'Bruno Martins', 'email' => 'bruno@email.com'],
-    ['id' => 12, 'nome' => 'Patrícia Gomes', 'email' => 'patricia@email.com'],
-    ['id' => 13, 'nome' => 'Gustavo Silva', 'email' => 'gustavo@email.com'],
-    ['id' => 14, 'nome' => 'Ricardo Ramos', 'email' => 'ricardo@email.com'],
-    ['id' => 15, 'nome' => 'Fernanda Lima', 'email' => 'fernanda@email.com'],
-    ['id' => 16, 'nome' => 'João Souza', 'email' => 'joao@email.com'],
-    ['id' => 17, 'nome' => 'Sérgio Farias', 'email' => 'sergio@email.com'],
-    ['id' => 18, 'nome' => 'Marcos Rocha', 'email' => 'marcos@email.com'],
-    ['id' => 19, 'nome' => 'Eduardo Tavares', 'email' => 'eduardo@email.com'],
-    ['id' => 20, 'nome' => 'Vinicius Carvalho', 'email' => 'vinicius@email.com'],
 ];
+
+$ultimoId = max(array_column($clientes, 'id')) + 1;
 ?>
 
 <section>
-    <div>
-        <a class="acao" href="Cadastrar.php">
-            <button class="add" title="Adicionar cliente">
-                <span class="material-symbols-outlined">
-                    add
-                </span>
-                <span>Cadastrar</span>
-            </button>
-        </a>
+    <input type="hidden" id="ultimoId" value="<?= $ultimoId ?>">
+
+    <div class="add">
+    <button class="add" title="Adicionar cliente" onclick="adicionarCliente()">
+        <span class="material-symbols-outlined">add</span>
+        <span>Adicionar</span>
+    </button>
     </div>
 
-    <table class="tabela">
-        
+    <table class="tabela" id="tabela-cliente">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tabela-corpo">
             <?php foreach ($clientes as $cliente): ?>
                 <tr>
                     <td><?= $cliente['id'] ?></td>
                     <td><?= $cliente['nome'] ?></td>
                     <td><?= $cliente['email'] ?></td>
+                    <td>
+                        <button onclick="editarCliente(this)">✏️</button>
+                        <button onclick="excluirCliente(this)">❌</button>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

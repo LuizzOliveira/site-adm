@@ -21,20 +21,31 @@ $pedidos = [
     ['id' => 19, 'cliente_id' => 20, 'produto_id' => 18, 'quantidade' => 1, 'total' => 899.99],
     ['id' => 20, 'cliente_id' => 17, 'produto_id' => 19, 'quantidade' => 1, 'total' => 2999.99],
 ];
+$ultimoId = end($pedidos)['id'];
 ?>
 
-<section>
-    <table class="tabela">
+<section id="pedidos">
+    <input type="hidden" id="ultimoId" value="<?= $ultimoId ?>">
+
+    <div class="add">
+        <button class="add" title="Adicionar pedido" onclick="adicionarPedido()">
+            <span class="material-symbols-outlined">add</span>
+            <span>Adicionar</span>
+        </button>
+    </div>
+
+    <table class="tabela" id="tabela-pedido">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Cliente_id</th>
-                <th>Produtos_id</th>
+                <th>Produto_id</th>
                 <th>Quantidade</th>
                 <th>Total</th>
+                <th>Ações</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="tabela-pedido-corpo">
             <?php foreach ($pedidos as $pedido) : ?>
                 <tr>
                     <td><?= $pedido['id'] ?></td>
@@ -42,6 +53,10 @@ $pedidos = [
                     <td><?= $pedido['produto_id'] ?></td>
                     <td><?= $pedido['quantidade'] ?></td>
                     <td><?= $pedido['total'] ?></td>
+                    <td>
+                        <button class="editar" onclick="editarPedido(this)">✏️</button>
+                        <button class="excluir" onclick="excluirPedido(this)">❌</button>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

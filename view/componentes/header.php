@@ -8,4 +8,7 @@
 
 
     <link rel="stylesheet" href="/site-adm/view/assets/css/componentes/style.css">
+
+    <script src="/site-adm/view/assets/js/scripts.js" defer></script>
+
 </head>

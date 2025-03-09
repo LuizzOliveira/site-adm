@@ -39,6 +39,8 @@ require_once __DIR__ . '/../../config/config-componentes.php';
     </main>
 
     <?php require_once Config::$paths['footer']; ?>
-
+    
+    <script src="/site-adm/view/assets/js/scripts.js" defer></script>
+    
 </body>
 </html>

@@ -22,10 +22,23 @@ $produtos = [
     ['id' => 19, 'nome' => 'Bicicleta Speed', 'categoria' => 'Esportes', 'preco' => 2999.99, 'estoque' => 15],
     ['id' => 20, 'nome' => 'Tenda de Camping', 'categoria' => 'Camping', 'preco' => 499.99, 'estoque' => 22],
 ];
+
+$ultimoId = end($produtos)['id'];
+
 ?>
 
+
+
 <section>
-    <table class="tabela">
+    <input type="hidden" id="ultimoId" value="<?= $ultimoId ?>">
+
+    <div class="add">
+        <button class="add" title="tabela-produto" onclick="adicionarProduto()">
+            <span class="material-symbols-outlined">add</span>
+            <span>Adicionar</span>
+        </button>
+    </div>
+    <table class="tabela" id="tabela-produto">
         <thead>
             <tr>
                 <th>ID</th>
@@ -33,18 +46,24 @@ $produtos = [
                 <th>Categoria</th>
                 <th>Preço</th>
                 <th>Estoque</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($produtos as $produto) : ?>
-                <tr>
+                <tr id="produto-<?= $produto['id'] ?>">
                     <td><?= $produto['id'] ?></td>
-                    <td><?= $produto['nome'] ?></td>
-                    <td><?= $produto['categoria'] ?></td>
-                    <td><?= $produto['preco'] ?></td>
-                    <td><?= $produto['estoque'] ?></td>
+                    <td class="nome"><?= $produto['nome'] ?></td>
+                    <td class="categoria"><?= $produto['categoria'] ?></td>
+                    <td class="preco"><?= $produto['preco'] ?></td>
+                    <td class="estoque"><?= $produto['estoque'] ?></td>
+                    <td>
+                        <button class="editar" onclick="editarProduto(<?= $produto['id'] ?>)">✏️</button>
+                        <button onclick="excluirProduto(this)">❌</button>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
     </table>
 </section>
+
