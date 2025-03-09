@@ -1,0 +1,104 @@
+.tabela{
+    width: 100%;
+    border-collapse: collapse;
+    letter-spacing: 1px;
+    cursor: pointer;
+    color: rgb(10, 10, 10);
+    
+    th, td { 
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center; 
+    }
+    
+    th { 
+        font-size: 16px;
+        font-weight: bold;
+        background: linear-gradient(0deg, rgba(0,109,119,1) 0%, rgba(53,149,158,1) 100%); 
+        color: white; 
+    }
+
+    tr{
+        font-weight: bold;
+        background-color: #f2f2f2; 
+        &:hover{
+            background: #8b8a8a
+        }
+    }
+}
+
+.login-body {
+    display: flex;
+    justify-content: center;
+    height: 55vh;
+    margin-top: 80px;
+
+    .login-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        align-items: center;
+        background: rgb(255, 255, 255);
+        padding: 20px;
+        width: 350px;
+        box-shadow:1px 1px 10px rgb(255, 255, 255);
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    h2 {
+        font-weight: bold;
+        font-size: 30px;
+        color: #006d77;
+        margin-top: 0px;
+        margin-bottom: 40px;
+    }
+
+    .form {
+        text-align: left;
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        width: 93%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn {
+        width: 100%;
+        background: linear-gradient(0deg, rgba(0,109,119,1) 0%, rgba(53,149,158,1) 100%);
+        color: white;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .btn:hover {
+        background: linear-gradient(0deg, rgba(53,149,158,1) 2%, rgba(0,109,119,1) 88%);
+    }
+
+    .register {
+        margin-top: 15px;
+        font-size: 14px;
+    }
+
+    .register a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .register a:hover {
+        text-decoration: underline;
+    }
+}
