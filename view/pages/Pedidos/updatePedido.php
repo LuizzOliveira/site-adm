@@ -34,10 +34,13 @@ if (isset($_GET['id'])) {
 
 ?>
 
-<section>
-    <div class="pedido">
+<section class="pedido">
+    <div >
+
         <h1>Editar Pedido</h1>
+
         <form method="POST" action="?page=salvarPedido" id="formPedido">
+
             <input type="hidden" name="id" value="<?= htmlspecialchars($pedidoEdit['id']) ?>">
 
             <label for="clienteId">Cliente ID:</label>
@@ -57,16 +60,15 @@ if (isset($_GET['id'])) {
     </div>
 
     <?php if (isset($_SESSION['pedido_salvo']) && $_SESSION['pedido_salvo']): ?>
+
         <div id="msgSucesso" style="color: green; font-weight: bold; margin-top: 20px;">
             Pedido salvo com sucesso!
         </div>
+
         <?php unset($_SESSION['pedido_salvo']); ?>
-        <script>
-            setTimeout(function() {
-                window.location.href = "?page=pedidos";
-            }, 5000);
-        </script>
+
     <?php endif; ?>
+
 </section>
 
 <style>

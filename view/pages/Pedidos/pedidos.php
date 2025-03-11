@@ -44,7 +44,7 @@ if (isset($_GET['id'])) {
                 <th>Cliente_id</th>
                 <th>Produtos_id</th>
                 <th>Quantidade</th>
-                <th>Total</th>
+                <th>Total</th>+
                 <th>Ações</th>
             </tr>
         </thead>
@@ -65,41 +65,3 @@ if (isset($_GET['id'])) {
         </tbody>
     </table>
 </section>
-
-<section>
-    <div class="pedido">
-        <h1>Editar Pedido</h1>
-        <form method="POST" action="?page=salvarPedido">
-            <input type="hidden" name="id" value="<?= $pedidoEdit ? $pedidoEdit['id'] : '' ?>">
-
-            <label for="clienteId">Cliente ID:</label>
-            <input type="number" name="cliente_id" value="<?= $pedidoEdit ? $pedidoEdit['cliente_id'] : '' ?>" placeholder="Digite o Cliente ID"><br>
-            
-            <label for="produtoId">Produto ID:</label>
-            <input type="number" name="produto_id" value="<?= $pedidoEdit ? $pedidoEdit['produto_id'] : '' ?>" placeholder="Digite o Produto ID"><br>
-
-            <label for="quantidade">Quantidade:</label>
-            <input type="number" name="quantidade" value="<?= $pedidoEdit ? $pedidoEdit['quantidade'] : '' ?>" placeholder="Digite a quantidade"><br>
-
-            <label for="total">Total:</label>
-            <input type="number" name="total" value="<?= $pedidoEdit ? $pedidoEdit['total'] : '' ?>" placeholder="Digite o total"><br>
-
-            <button type="submit" name="salvar">Salvar</button>
-        </form>
-    </div>
-</section>
-
-<?php
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Simulando o salvamento (normalmente faria um update no banco de dados)
-    $id = (int) $_POST['id'];
-    $cliente_id = (int) $_POST['cliente_id'];
-    $produto_id = (int) $_POST['produto_id'];
-    $quantidade = (int) $_POST['quantidade'];
-    $total = (float) $_POST['total'];
-
-    // Aqui entraria a lógica para atualizar o pedido no banco de dados
-    echo "<p>Pedido atualizado com sucesso!</p>";
-    echo "<meta http-equiv='refresh' content='2;url=?page=pedidos'>";
-}
-?>

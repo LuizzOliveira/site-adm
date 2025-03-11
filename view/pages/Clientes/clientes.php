@@ -1,5 +1,4 @@
 <?php
-// Array de clientes (normalmente, você obteria isso de um banco de dados)
 $clientes = [
     ['id' => 1, 'nome' => 'Ana Lima', 'email' => 'ana@email.com'],
     ['id' => 2, 'nome' => 'Carlos Souza', 'email' => 'carlos@email.com'],

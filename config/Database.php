@@ -51,6 +51,6 @@ $database = new Database(
     3306,
     "root",
     "",
-    "site-adm"
+    "site_adm"
 );
 $conn = $database->createConnection();

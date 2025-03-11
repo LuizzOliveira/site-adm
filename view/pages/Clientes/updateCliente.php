@@ -24,7 +24,6 @@ $clientes = [
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    // Procura o cliente pelo ID
     $clienteEdit = null;
     foreach ($clientes as $cliente) {
         if ($cliente['id'] == $id) {
@@ -33,7 +32,6 @@ if (isset($_GET['id'])) {
         }
     }
 } else {
-    // Caso o ID não seja passado, prepara os campos em branco para novo cadastro
     $clienteEdit = [
         'id' => '',
         'nome' => '',

@@ -138,6 +138,7 @@ nav.navbar-grid {
 
 
 
+
 @media (max-width: 600px) {
     .body {
         grid-template-columns: 1fr;
