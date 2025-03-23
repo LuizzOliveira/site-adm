@@ -25,6 +25,9 @@ require_once __DIR__ . '/../../config/config-componentes.php';
             'updateProduto'   => __DIR__ . '/../pages/Produtos/updateProduto.php',
             'updatePedido'   => __DIR__ . '/../pages/Pedidos/updatePedido.php',
             'updateCliente'   => __DIR__ . '/../pages/Clientes/updateCliente.php',
+            'excluirCliente'   => __DIR__ . '/../pages/Clientes/excluirCliente.php',
+            'excluirProduto'   => __DIR__ . '/../pages/Produtos/excluirProduto.php',
+            'excluirPedido'   => __DIR__ . '/../pages/Pedidos/excluirPedido.php',
         ];
 
         $page = $_GET['page'] ?? 'home';
