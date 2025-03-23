@@ -34,5 +34,12 @@ class Database
     }
 }
 
-$database = new Database("localhost", 3308, "root", "", "site_adm");
+try {
+    $database = new Database("localhost", 3308, "root", "", "site_adm");
+    $conn = $database->createConnection();
+    echo "Conexão estabelecida com sucesso!";
+} catch (Exception $e) {
+    echo "Erro: " . $e->getMessage();
+}
+
 $conn = $database->createConnection();
