@@ -3,7 +3,9 @@ require_once "../../config/Database.php";
 require_once "../../model/ClientesModel.php";
 
 $clientesModel = new ClientesModel($conn);
+
 $id = isset($_GET['id']) ? (int) $_GET['id'] : null;
+
 $cliente = $id ? $clientesModel->findById($id) : null;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -12,10 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cpf = trim($_POST["cpf"]);
 
     if ($id && $cliente) {
-        // Atualiza se o cliente existir
+
         $clientesModel->update($id, $nome,$email,$cpf);
     } else {
-        // Insere novo cliente se não houver ID
+
         $clientesModel->insert( $nome,$email,$email);
     }
 

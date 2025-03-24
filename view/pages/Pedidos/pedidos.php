@@ -21,9 +21,9 @@ $pedidos = $pedidosModel->findAll();
     <table class="tabela" id="tabela-pedido">
         <thead>
             <tr>
-                <th>Pedido Id</th>
-                <th>Produto iD</th>
-                <th>Cliente iD</th>
+                <th>Pedido id</th>
+                <th>Produto id</th>
+                <th>Cliente id</th>
                 <th>Data pedido</th>
                 <th>Ações</th>
             </tr>

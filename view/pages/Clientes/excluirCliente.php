@@ -6,7 +6,6 @@ echo "Arquivo carregado com sucesso!";
 
 $clientesModel = new ClientesModel($conn);
 
-// Captura o ID via GET ou POST
 $id = isset($_POST['id']) ? (int) $_POST['id'] : (isset($_GET['id']) ? (int) $_GET['id'] : null);
 
 if (!$id || !$clientesModel->findById($id)) {

@@ -13,10 +13,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $estoque = $_POST["estoque"];
 
     if ($id && $produto) {
-        // Atualiza se o produto existir
         $produtosModel->update($id, $nome, $descricao, $preco, $estoque);
     } else {
-        // Insere novo produto se não houver ID
         $produtosModel->insert($nome, $descricao, $preco, $estoque);
     }
 

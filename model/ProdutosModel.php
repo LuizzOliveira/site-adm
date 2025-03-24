@@ -34,7 +34,6 @@ class ProdutosModel
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
 
-        // Retorna como objeto genérico, não como ProdutosModel
         return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
@@ -45,7 +44,7 @@ class ProdutosModel
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
         
-        return $stmt->rowCount() > 0; // Retorna verdadeiro se deletar
+        return $stmt->rowCount() > 0;
     }
 
     public function insert($nome, $descricao, $preco, $estoque)
