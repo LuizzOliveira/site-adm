@@ -30,13 +30,12 @@ class ProdutosModel
     public function findById($id)
     {
         $query = "SELECT * FROM $this->table WHERE produto_id = :id";
-
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
-        $stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
 
-        return $stmt->fetch();
+        // Retorna como objeto genérico, não como ProdutosModel
+        return $stmt->fetch(PDO::FETCH_OBJ);
     }
 
     public function delete($id)

@@ -10,10 +10,13 @@ $produtos = $produtosModel->findAll();
     <input type="hidden" id="ultimoId" value="<?= isset($produtos[array_key_last($produtos)]->produto_id) ? $produtos[array_key_last($produtos)]->produto_id : 0 ?>">
 
     <div class="add">
-        <button class="add" title="tabela-produto" onclick="adicionarProduto()">
-            <span class="material-symbols-outlined">add</span>
-            <span>Adicionar</span>
-        </button>
+        <a href="?page=updateProduto">
+            <button class="add" title="tabela-produto" onclick="adicionarProduto()">
+                <span class="material-symbols-outlined">add</span>
+                <span>Adicionar</span>
+            </button>
+        </a>
+        
     </div>
 
     <table class="tabela" id="tabela-produto">

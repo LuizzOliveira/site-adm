@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($produtosModel->delete($id)) {
         header("Location: ?page=produtos&mensagem=sucesso");
     } else {
-        header("Location: ?page=produtos&mensagem=erro");
+        header("Location: ?page=produtoss&mensagem=erro");
     }
     exit();
 }

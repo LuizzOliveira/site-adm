@@ -1,65 +1,48 @@
 <?php
-$pedidos = [
-    ['id' => 1, 'cliente_id' => 2, 'produto_id' => 5, 'quantidade' => 1, 'total' => 499.99],
-    ['id' => 2, 'cliente_id' => 4, 'produto_id' => 10, 'quantidade' => 2, 'total' => 699.98],
-    ['id' => 3, 'cliente_id' => 1, 'produto_id' => 3, 'quantidade' => 1, 'total' => 3299.99],
-    ['id' => 4, 'cliente_id' => 6, 'produto_id' => 8, 'quantidade' => 1, 'total' => 1299.99],
-    ['id' => 5, 'cliente_id' => 3, 'produto_id' => 15, 'quantidade' => 1, 'total' => 2499.99],
-    ['id' => 6, 'cliente_id' => 7, 'produto_id' => 12, 'quantidade' => 1, 'total' => 2199.99],
-    ['id' => 7, 'cliente_id' => 10, 'produto_id' => 7, 'quantidade' => 2, 'total' => 1799.98],
-    ['id' => 8, 'cliente_id' => 5, 'produto_id' => 1, 'quantidade' => 1, 'total' => 2999.99],
-    ['id' => 9, 'cliente_id' => 9, 'produto_id' => 17, 'quantidade' => 1, 'total' => 799.99],
-    ['id' => 10, 'cliente_id' => 15, 'produto_id' => 20, 'quantidade' => 1, 'total' => 499.99],
-];
+require_once "../../config/Database.php";
+require_once "../../model/PedidosModel.php";
 
-$pedidoEdit = null;
-if (isset($_GET['id'])) {
-    $idPedido = (int) $_GET['id'];
-    foreach ($pedidos as $pedido) {
-        if ($pedido['id'] === $idPedido) {
-            $pedidoEdit = $pedido;
-            break;
-        }
-    }
-    if (!$pedidoEdit) {
-        header("Location: ?page=pedidos");
-        exit;
-    }
-}
+$pedidosModel = new PedidosModel($conn);
+$pedidos = $pedidosModel->findAll();
 ?>
 
 <section>
-    <div class="add">
-        <a class="acao" href="?page=updatePedido">
-            <button class="add" title="Adicionar pedido">
+    <input type="hidden" id="ultimoId" value="<?= isset($pedidos[array_key_last($pedidos)]->id) ? $pedidos[array_key_last($pedidos)]->id : 0 ?>">
+
+    <!-- <div class="add">
+        <a href="?page=updatePedido">
+            <button class="add" title="tabela-pedido" onclick="adicionarPedido()">
                 <span class="material-symbols-outlined">add</span>
-                <span>Cadastrar</span>
+                <span>Adicionar</span>
             </button>
         </a>
-    </div>
-    <table class="tabela">
+    </div> -->
+
+    <table class="tabela" id="tabela-pedido">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Cliente_id</th>
-                <th>Produtos_id</th>
-                <th>Quantidade</th>
-                <th>Total</th>+
+                <th>Pedido Id</th>
+                <th>Produto iD</th>
+                <th>Cliente iD</th>
+                <th>Data pedido</th>
                 <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <?php foreach ($pedidos as $pedido) : ?>
-                <tr>
-                    <td><?= $pedido['id'] ?></td>
-                    <td><?= $pedido['cliente_id'] ?></td>
-                    <td><?= $pedido['produto_id'] ?></td>
-                    <td><?= $pedido['quantidade'] ?></td>
-                    <td><?= $pedido['total'] ?></td>
+                <tr id="pedido-<?= $pedido->pedido_id ?>">
+                    <td><?= $pedido->pedido_id ?></td>
+                    <td class="cliente_id"><?= htmlspecialchars($pedido->produto_id) ?></td>
+                    <td class="produto_id"><?= htmlspecialchars($pedido->cliente_id) ?></td>
+                    <td class="data_pedido"><?= htmlspecialchars($pedido->data_pedido) ?></td>
                     <td>
-                        <a href="?page=updatePedido&id=<?= $pedido['id'] ?>"><button>✏️</button></a>
-                        <button>❌</button>
-                    </td>
+                        <!-- <a href="?page=updatePedido&id=<?= $pedido->pedido_id ?>">
+                            <button class="editar">✏️</button>
+                        </a> -->
+                        <form action="?page=excluirPedido" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir este pedido?');">
+                            <input type="hidden" name="id" value="<?= $pedido->pedido_id?>">
+                            <button type="submit" class="excluir">❌</button>
+                        </form>
                 </tr>
             <?php endforeach; ?>
         </tbody>
