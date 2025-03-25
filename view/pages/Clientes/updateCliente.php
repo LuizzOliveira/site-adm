@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <section class="cliente">
-    <form method="post" id="formCliente">
+    <form class="cliente-form" method="post" id="formCliente">
         <label>Nome:</label>
         <input type="text" name="nome" value="<?= htmlspecialchars($cliente->nome ?? '') ?>" required>
         <label>Email:</label>
@@ -39,50 +39,3 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <a href="?page=clientes">Cancelar</a>
     </form>
 </section>
-
-<style>
-    .cliente {
-        font-family: Arial, sans-serif;
-        /* background-color: #f4f4f4; */
-        color: #333;
-        padding: 20px;
-    }
-    form {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        margin: 0 auto;
-    }
-    label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-    }
-    input {
-        width: 100%;
-        padding: 8px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        font-size: 1em;
-    }
-    input:focus {
-        border-color: #4CAF50;
-        outline: none;
-    }
-    button {
-        width: 100%;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 1.2em;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-    button:hover {
-        background-color: #45a049;
-    }
-</style>

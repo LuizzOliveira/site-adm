@@ -24,82 +24,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <section class="produto">
-    <form method="POST">
-        <label>Nome:</label>
-        <input type="text" name="nome" value="<?= htmlspecialchars($produto->nome ?? '') ?>" required>
+    <form class="produto-form" method="POST">
+        <label class="produto-label">Nome:</label>
+        <input class="produto-input" type="text" name="nome" value="<?= htmlspecialchars($produto->nome ?? '') ?>" required>
 
-        <label>Descrição:</label>
-        <textarea name="descricao" required><?= htmlspecialchars($produto->descricao ?? '') ?></textarea>
+        <label class="produto-label">Descrição:</label>
+        <textarea class="produto-textarea" name="descricao" required><?= htmlspecialchars($produto->descricao ?? '') ?></textarea>
 
-        <label>Preço:</label>
-        <input type="number" name="preco" step="0.01" value="<?= htmlspecialchars($produto->preco ?? '') ?>" required>
+        <label class="produto-label">Preço:</label>
+        <input class="produto-input" type="number" name="preco" step="0.01" value="<?= htmlspecialchars($produto->preco ?? '') ?>" required>
 
-        <label>Estoque:</label>
-        <input type="number" name="estoque" value="<?= htmlspecialchars($produto->estoque ?? '') ?>" required>
+        <label class="produto-label">Estoque:</label>
+        <input class="produto-input" type="number" name="estoque" value="<?= htmlspecialchars($produto->estoque ?? '') ?>" required>
 
-        <button type="submit"><?= $id ? "Atualizar Produto" : "Cadastrar Produto" ?></button>
+        <button class="produto-button" type="submit"><?= $id ? "Atualizar Produto" : "Cadastrar Produto" ?></button>
     </form>
 </section>
-
-<style>
-.produto {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    padding: 20px;
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    button {
-        padding: 10px 20px;
-        margin: 10px;
-        font-size: 1em;
-        cursor: pointer;
-        border: none;
-        background-color: #4CAF50;
-        color: white;
-        border-radius: 5px;
-        transition: background-color 0.3s;
-    }
-
-    button:hover {
-        background-color: #45a049;
-    }
-    form {
-        background-color: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        width: 300px;
-        margin: 0 auto;
-    }
-    label {
-        display: block;
-        margin: 10px 0 5px;
-        font-weight: bold;
-    }
-    input[type="text"],
-    input[type="number"] {
-        width: 100%;
-        padding: 10px;
-        border-radius: 5px;
-        border: 1px solid #ddd;
-        font-size: 1em;
-    }
-    input[type="text"]:focus,
-    input[type="number"]:focus {
-        border-color: #4CAF50;
-        outline: none;
-    }
-    button#salvar {
-        width: 100%;
-        background-color: #4CAF50;
-        font-size: 1.2em;
-    }
-
-    button#salvar:hover {
-        background-color: #45a049;
-    }
-}
-</style>
