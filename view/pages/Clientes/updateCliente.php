@@ -14,11 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cpf = trim($_POST["cpf"]);
 
     if ($id && $cliente) {
-
         $clientesModel->update($id, $nome,$email,$cpf);
-    } else {
 
-        $clientesModel->insert( $nome,$email,$email);
+    } else {
+        $clientesModel->insert( $nome,$email,$cpf);
     }
 
     header("Location:?page=clientes");
@@ -30,8 +29,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <form class="cliente-form" method="post" id="formCliente">
         <label>Nome:</label>
         <input type="text" name="nome" value="<?= htmlspecialchars($cliente->nome ?? '') ?>" required>
+
         <label>Email:</label>
         <input type="email" name="email" value="<?= htmlspecialchars($cliente->email ?? '') ?>" required>
+        
         <label>Cpf:</label>
         <input type="text" name="cpf" value="<?= htmlspecialchars($cliente->cpf ?? '') ?>" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">
         

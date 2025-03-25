@@ -12,10 +12,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $cliente_id = $_POST["cliente_id"];
 
     if ($id && $pedido) {
-        // Atualiza se o produto existir
         $pedidosModel->update($pedido_id, $produto_id, $cliente_id);
     } else {
-        // Insere novo produto se não houver ID
         $pedidosModel->insert($produto_id, $cliente_id);
     }
 
