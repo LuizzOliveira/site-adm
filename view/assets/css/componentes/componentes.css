@@ -136,9 +136,6 @@ nav.navbar-grid {
     background: linear-gradient(0deg, rgba(42, 51, 87, 0.516) 8%, rgba(21, 26, 45, 0.492) 100%);
 }
 
-
-
-
 @media (max-width: 600px) {
     .body {
         grid-template-columns: 1fr;

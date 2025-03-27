@@ -1,4 +1,4 @@
-<!-- <!-- <?php
+<?php
 require_once "../../config/Database.php";
 require_once "../../model/PedidosModel.php";
 
@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     header("Location: ?page=pedidos");
     exit();
 }
-?> -->
+?> 
 <section class="pedido">
     <form method="post" id="formPedido">
         <label>Produto id:</label>
