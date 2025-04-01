@@ -286,3 +286,7 @@
         background-color: #45a049;
     }
 }
+
+.noClick{
+    cursor: none;
+}

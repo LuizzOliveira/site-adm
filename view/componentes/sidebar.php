@@ -3,7 +3,7 @@
         <img class="img-sidebar" src="http://localhost/site-adm/view/assets/img/logo.png" alt="logo">
         <ul>
             <li>
-                <a href="?page=home" class="link-sidebar">
+                <a href="?page=login" class="link-sidebar">
                     <button class="button">
                         HOME
                     </button>

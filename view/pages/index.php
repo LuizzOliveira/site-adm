@@ -18,7 +18,7 @@ require_once __DIR__ . '/../../config/config-componentes.php';
     <main class="content-grid">
         <?php
         $pages = [
-            'home' => __DIR__ . 'view/pages/home.php',
+            'home' => __DIR__ . '/../pages/Login/home.php',
             'produtos' => __DIR__ . '/../pages/Produtos/produtos.php',
             'pedidos'    => __DIR__ . '/../pages/Pedidos/pedidos.php',
             'clientes'   => __DIR__ . '/../pages/Clientes/clientes.php',
@@ -28,6 +28,7 @@ require_once __DIR__ . '/../../config/config-componentes.php';
             'excluirCliente'   => __DIR__ . '/../pages/Clientes/excluirCliente.php',
             'excluirProduto'   => __DIR__ . '/../pages/Produtos/excluirProduto.php',
             'excluirPedido'   => __DIR__ . '/../pages/Pedidos/excluirPedido.php',
+            'viewPedidos'   => __DIR__ . '/../pages/Pedidos/viewPedidos.php',
         ];
 
         $page = $_GET['page'] ?? 'home';

@@ -26,6 +26,14 @@ class ClientesModel
         return $stmt->fetchAll();
     }
 
+    function getNomeClientePorId($conn, $cliente_id) {
+        $query = "SELECT nome FROM clientes WHERE cliente_id = :cliente_id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':cliente_id', $cliente_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
     public function findById($id)
     {
         $query = "SELECT * FROM $this->table WHERE cliente_id = :id";

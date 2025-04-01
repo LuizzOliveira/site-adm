@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <section class="pedido">
     <form method="post" id="formPedido">
         <label>Produto id:</label>
-        <input type="number" name="produto_id" value="<?= htmlspecialchars($pedido->produto_id?? '') ?>" required>
+        <input type="number" name="produto_id" Placeholder="<?= htmlspecialchars($pedido->produto_id?? '') ?>" required>
 
         <label>Cliente id:</label>
         <input type="number" name="cliente_id" value="<?= htmlspecialchars($pedido->cliente_id?? '') ?>" required>

@@ -27,6 +27,14 @@ class ProdutosModel
         return $stmt->fetchAll();
     }
 
+    function getNomeProdutoPorId($conn, $produto_id) {
+        $query = "SELECT nome FROM produtos WHERE produto_id = :produto_id";
+        $stmt = $conn->prepare($query);
+        $stmt->bindParam(':produto_id', $produto_id, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchColumn();
+    }
+
     public function findById($id)
     {
         $query = "SELECT * FROM $this->table WHERE produto_id = :id";
@@ -50,7 +58,7 @@ class ProdutosModel
     public function insert($nome, $descricao, $preco, $estoque)
     {
         $query = "INSERT INTO $this->table (nome, descricao, preco, estoque) 
-                  VALUES (:nome, :descricao, :preco, :estoque)";
+            VALUES (:nome, :descricao, :preco, :estoque)";
 
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":nome", $nome);

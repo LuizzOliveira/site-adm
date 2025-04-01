@@ -25,6 +25,7 @@ class PedidosModel
         return $stmt->fetchAll();
     }
 
+
     public function findById($id)
     {
         $query = "SELECT * FROM $this->table WHERE pedido_id = :id";
@@ -47,32 +48,33 @@ class PedidosModel
         return $stmt->rowCount() > 0;
     }
 
-    // public function insert($produto_id, $cliente_id)
-    // {
-    //     $query = "INSERT INTO $this->table (pedido_id, produto_id, cliente_id, data_pedido) 
-    //               VALUES (:pedido_id, :produto_id, :cliente_id, data_pedido)";
+    public function insert($produto_id, $cliente_id)
+    {
+        $query = "INSERT INTO $this->table (pedido_id, produto_id, cliente_id, data_pedido) 
+                  VALUES (:pedido_id, :produto_id, :cliente_id, data_pedido)";
 
-    //     $stmt = $this->conn->prepare($query);
-    //     $stmt->bindParam(":produto_id", $produto_id, PDO::PARAM_INT);
-    //     $stmt->bindParam(":cliente_id", $cliente_id, PDO::PARAM_INT);
-    //     $stmt->execute();
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":produto_id", $produto_id, PDO::PARAM_INT);
+        $stmt->bindParam(":cliente_id", $cliente_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    //     return $stmt->rowCount() > 0;
-    // }
+        return $stmt->rowCount() > 0;
+    }
 
-    // public function update($produto_id, $cliente_id)
-    // {
-    //     $query = "UPDATE $this->table SET
-    //               produto_id = :produto_id,
-    //               cliente_id = :cliente_id
-    //               data_pedido = :data_pedido
-    //               WHERE pedido_id = :id";
+    public function update($produto_id, $cliente_id)
+    {
+        $query = "UPDATE $this->table SET
+                  produto_id = :produto_id,
+                  cliente_id = :cliente_id
+                  data_pedido = :data_pedido
+                  WHERE pedido_id = :id";
 
-    //     $stmt = $this->conn->prepare($query);
-    //     $stmt->bindParam(":produto_id", $produto_id, PDO::PARAM_INT);
-    //     $stmt->bindParam(":cliente_id", $cliente_id, PDO::PARAM_INT);
-    //     $stmt->execute();
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":produto_id", $produto_id, PDO::PARAM_INT);
+        $stmt->bindParam(":cliente_id", $cliente_id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    //     return $stmt->rowCount() > 0;
-    // }
+        return $stmt->rowCount() > 0;
+    }
+    
 }
