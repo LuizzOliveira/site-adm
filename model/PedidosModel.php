@@ -48,33 +48,44 @@ class PedidosModel
         return $stmt->rowCount() > 0;
     }
 
-    public function insert($produto_id, $cliente_id)
+    public function insert($produto_id, $cliente_id, $data_pedido)
     {
-        $query = "INSERT INTO $this->table (pedido_id, produto_id, cliente_id, data_pedido) 
-                  VALUES (:pedido_id, :produto_id, :cliente_id, data_pedido)";
-
+        // Adicione a query de inserção com todos os placeholders corretos
+        $query = "INSERT INTO $this->table (produto_id, cliente_id, data_pedido) 
+                  VALUES (:produto_id, :cliente_id, :data_pedido)";
+    
         $stmt = $this->conn->prepare($query);
+    
+        // Vincule os parâmetros corretamente
         $stmt->bindParam(":produto_id", $produto_id, PDO::PARAM_INT);
         $stmt->bindParam(":cliente_id", $cliente_id, PDO::PARAM_INT);
+        $stmt->bindParam(":data_pedido", $data_pedido);
+    
+        // Execute a query
         $stmt->execute();
-
+    
         return $stmt->rowCount() > 0;
     }
+    
 
-    public function update($produto_id, $cliente_id)
+    public function update($produto_id, $cliente_id, $data_pedido, $pedido_id)
     {
         $query = "UPDATE $this->table SET
                   produto_id = :produto_id,
-                  cliente_id = :cliente_id
+                  cliente_id = :cliente_id,
                   data_pedido = :data_pedido
                   WHERE pedido_id = :id";
-
+    
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(":produto_id", $produto_id, PDO::PARAM_INT);
         $stmt->bindParam(":cliente_id", $cliente_id, PDO::PARAM_INT);
+        $stmt->bindParam(":data_pedido", $data_pedido);
+        $stmt->bindParam(":id", $pedido_id, PDO::PARAM_INT);
+    
         $stmt->execute();
-
+    
         return $stmt->rowCount() > 0;
     }
+    
     
 }
