@@ -1,6 +1,6 @@
 # Projeto de Gerenciamento de Clientes, Produtos e Pedidos
 
-Este projeto é um sistema web para gerenciar clientes, produtos e pedidos. Ele permite adicionar, editar e visualizar registros de forma intuitiva.
+Este projeto é um sistema web para gerenciar clientes, produtos e pedidos. Ele permite adicionar, editar e excluir registros de forma intuitiva.
 
 ## 📂 Estrutura do Projeto
 
@@ -27,7 +27,7 @@ Este projeto é um sistema web para gerenciar clientes, produtos e pedidos. Ele 
 ## 🛠 Tecnologias Utilizadas
 
 - **PHP**: Backend para gerenciar dados.
-- **JavaScript**: Lógica do frontend.
+- **MySql**: Banco de dados.
 - **HTML/CSS**: Interface do usuário.
 
 
@@ -35,26 +35,18 @@ Este projeto é um sistema web para gerenciar clientes, produtos e pedidos. Ele 
 
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
+   [https://github.com/LuizzOliveira/site-adm.git]
    ```
 2. Configure o banco de dados no diretório `config/`.
 3. Inicie um servidor local (Apache, XAMPP, etc.).
 4. Acesse no navegador:
    ```
-   http://localhost/seu-projeto/view/index.php
+   [http://localhost/site-adm/view/pages/?page=login]
    ```
-
-## 📄 Estrutura das Páginas
-
-- `index.php`: Página inicial com opções para navegar entre clientes, produtos e pedidos.
-- `pages/Clientes/clientes.php`: Lista de clientes.
-- `pages/Clientes/editar.php`: Formulário de edição de clientes.
-- `pages/Produtos/produtos.php`: Lista de produtos.
-- `pages/Pedidos/pedidos.php`: Gerenciamento de pedidos.
 
 ## 🔄 Navegação entre as Páginas
 
-Os botões de "Adicionar" e "Editar" redirecionam para a página correspondente de formulário, usando parâmetros na URL:
+Os botões de "Adicionar" , "Editar" e "Excluir" redirecionam para a página correspondente de formulário, usando parâmetros na URL:
 
 ```html
 <a href="editar.php?acao=editar&id=1">Editar Cliente</a>
@@ -63,11 +55,4 @@ Os botões de "Adicionar" e "Editar" redirecionam para a página correspondente 
 
 Após salvar um registro, o usuário é redirecionado automaticamente para a lista correspondente.
 
-## 📢 Contribuição
-
-Sinta-se à vontade para contribuir com melhorias no projeto. Faça um fork, crie uma branch e envie um pull request.
-
-## 📜 Licença
-
-Este projeto está sob a licença MIT.
 
